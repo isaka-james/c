@@ -5,7 +5,6 @@ The goal here was to print the message, without using libraries like in `beginne
 ## x86-64
 
 I used the inline assembly for the directly system calls
-
     ```c
     asm(
         "mov $1, %%rax\n" /* systemcall for the write(1) */
