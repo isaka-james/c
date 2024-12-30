@@ -96,13 +96,20 @@ int main() {
         int ch = kbhit();
         if (ch == 65) {  // Up arrow key in ANSI escape codes (65 is the up arrow key code)
             jump_count++;  // Increment jump count when up arrow is pressed
-        }
+	    board[GROUND - 1][2] = ' '; // replace with emptiness dinasour
+	    board[GROUND - 2][2] = DINO_CHAR; 
+        }else if(ch == 66){
+            jump_count++;  // Increment jump count when up arrow is pressed
+	    board[GROUND - 1][2] = DINO_CHAR; // replace with emptiness dinasour
+	    board[GROUND - 2][2] = ' '; 
+	}	   
 
         // Move the obstacle based on the speed and time (independent of FPS)
         obstacle_move_counter++;
         if (obstacle_move_counter >= FPS / OBSTACLE_SPEED) {  // Check if it's time to move the obstacle
             board[GROUND - 1][obstacle_position] = ' '; // Clear previous obstacle position
             obstacle_position--;  // Move the obstacle to the left
+	    //if ( obstacle_position ==  ){
             if (obstacle_position < 0) { // If the obstacle reaches the left edge
                 obstacle_position = WIDTH - 2; // Reset
 		score+=100;
@@ -123,4 +130,3 @@ int main() {
 
     return 0;
 }
-
